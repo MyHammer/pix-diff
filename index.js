@@ -49,6 +49,7 @@ function PixDiff(options) {
             return browser.getProcessedConfig();
         })
         .then(function (data) {
+            this._env = data.params.env || 'test';
             this.capabilities = data.capabilities;
             assert.ok(this.capabilities.browserName, 'Browser name is undefined.');
             // Require PixDiff matchers
@@ -95,6 +96,7 @@ PixDiff.prototype = {
         var formatOptions = {
             'tag': camelCase(description),
             'browserName': this.capabilities.browserName,
+            'env': this._env,
             'width': this.width,
             'height': this.height
         };
