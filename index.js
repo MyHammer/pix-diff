@@ -245,6 +245,25 @@ PixDiff.prototype = {
                     return result;
                 });
         }.bind(this));
+    },
+
+
+    //@todo test and docs
+    prepareOptions: {},
+
+    prepare: function (options) {
+        this.prepareOptions = options;
+
+        if (!browser.params.takeScreenshotMode) {
+            if (options.element) {
+                return this.checkRegion(options.element, options.tag);
+            } else {
+                return this.checkScreen(options.tag);
+            }
+        } else {
+            // do nothing
+            return true;
+        }
     }
 };
 
