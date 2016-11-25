@@ -254,8 +254,8 @@ PixDiff.prototype = {
     prepare: function (options) {
         this.prepareOptions = options;
         var pixDiffOptions = {
-          // threshold: 0.02,
-          // thresholdType: BlinkDiff.THRESHOLD_PERCENT,
+          threshold: 0.005,
+          thresholdType: BlinkDiff.THRESHOLD_PERCENT,
           hideShift: true
         };
 
