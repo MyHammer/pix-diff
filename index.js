@@ -253,12 +253,17 @@ PixDiff.prototype = {
 
     prepare: function (options) {
         this.prepareOptions = options;
+        var pixDiffOptions = {
+          // threshold: 0.02,
+          // thresholdType: BlinkDiff.THRESHOLD_PERCENT,
+          hideShift: true
+        };
 
         if (!browser.params.takeScreenshotMode) {
             if (options.element) {
-                return this.checkRegion(options.element, options.tag);
+                return this.checkRegion(options.element, options.tag, pixDiffOptions);
             } else {
-                return this.checkScreen(options.tag);
+                return this.checkScreen(options.tag, pixDiffOptions);
             }
         } else {
             // do nothing
